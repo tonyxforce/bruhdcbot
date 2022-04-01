@@ -1,0 +1,7 @@
+{
+    "notEnoughArgs": "kérlek adj meg több infót!",
+    "notFound": "nincs ilyen parancs!",
+    "permissionDenied": "nem engedélyezett!",
+    "permissionError": "nincs jogod a parancs futtatására!",
+    "userNotFound": "nincs ilyen felhasználó!"
+}
