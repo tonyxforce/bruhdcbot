@@ -1,12 +1,12 @@
 {
     "prefix": "b!",
-    "token": "NzYyMjczNTM3MTU5MjAwODE4.X3mwjQ.N2Er2pKNmPOeFVIl0M9ml3VpkfE",
+    "token": "<yo token here>",
     "status": [
         "prefix: %prefix%",
         "%scount% szerveren",
         "%prefix%help a segítségért"
     ],
     "admins": [
-        "690882474800054362"
+        "<yo id here>"
     ]
 }
