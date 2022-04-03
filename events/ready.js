@@ -4,8 +4,10 @@ const chalk = require('chalk');
 
 var path = require('path'); var originalLoggingMethod = console.log; console.logTrace = (firstArgument, ...otherArguments) => { var originalPrepareStackTrace = Error.prepareStackTrace; Error.prepareStackTrace = (_, stack) => stack; var callee = new Error().stack[1]; Error.prepareStackTrace = originalPrepareStackTrace; var relativeFileName = path.relative(__dirname, callee.getFileName()); var prefix = `${relativeFileName}:${callee.getLineNumber()}:`; if (typeof firstArgument === 'string') { originalLoggingMethod(prefix + ' ' + firstArgument, ...otherArguments) } else { originalLoggingMethod(prefix, firstArgument, ...otherArguments) } }
 
-
-
+const { readdirSync } = require("fs"); 
+const ascii = require("ascii-table"); 
+let table = new ascii("Parancsok");
+table.setHeading("Parancsok", "Statusz"); 
 
 
 module.exports = {
@@ -18,6 +20,21 @@ module.exports = {
 
     run: (Discord, bot, config, errors) => {
 
+
+       const commands = readdirSync(`./commands/`).filter(file => file.endsWith(".js"));
+
+       for(let file of commands) {
+           let pull = require(`../commands/${file}`);
+
+           if(pull.name)
+               table.addRow(file, 'Működik');
+           } else {
+               table.addRow(file, 'Hiba');
+               continue;
+           }
+       }
+
+    console.log(table.toString());
 
 
         console.log(`bot elindult ${chalk.green(bot.user.tag)} néven`)
