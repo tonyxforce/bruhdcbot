@@ -63,7 +63,7 @@ bot.on("messageCreate", m => require("./events/message.js").run(Discord, bot, m,
 
 
 
-bot.login(config.token)
+bot.login(process.env.token || config.token)
 
 /* 
 
