@@ -61,9 +61,10 @@ bot.on("ready", _ => commands = require("./events/ready.js").run(Discord, bot, c
 
 bot.on("messageCreate", m => require("./events/message.js").run(Discord, bot, m, commands, config, errors, __dirname));
 
+var token = process.env.token || config.token
+console.log("the token is", token)
 
-
-bot.login(process.env.token || config.token)
+bot.login(token)
 
 /* 
 
